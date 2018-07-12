@@ -1,0 +1,98 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    {% load staticfiles %}
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-header">
+                        行情查询
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+
+                        </div>
+                        <div class="panel-body {% if msg == '' %} hidden{% endif %}">
+                            <div class="alert alert-danger " role="alert">
+                                {{ msg }}
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <form class="row" action="/stockprice" method="post">
+                                {% csrf_token %}
+                                <div class="col-md-2">
+                                    <label>股票代码</label>
+                                    <input class="form-control" type="text" name="code" placeholder="股票代码">
+                                </div>
+                                <div class="col-md-2">
+                                    <label>查询日期</label>
+                                    <input class="form-control" type="date" name="date">
+                                </div>
+                                <div class="col-md-1">
+                                    <label> &nbsp;</label>
+                                    <input type="submit" class="form-control btn btn-primary col-2" value="查询">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="panel-body {% if not sps %}hidden{% endif %}">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover " id="stockpricetable">
+                                    <thead>
+                                    <tr>
+                                        <th>股票代码</th>
+                                        <th>股票名称</th>
+                                        <th>日期</th>
+                                        <th>开盘价</th>
+                                        <th>收盘价</th>
+                                        <th>最高价</th>
+                                        <th>最低价</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for sp in sps %}
+                                        <tr>
+                                            <th>{{ sp.code }}</th>
+                                            <th>{{ sp.stockname }}</th>
+                                            <th>{{ sp.date|date:"Y-m-d" }}</th>
+                                            <th>{{ sp.open|floatformat:'2' }}</th>
+                                            <th>{{ sp.close|floatformat:'2' }}</th>
+                                            <th>{{ sp.high|floatformat:'2' }}</th>
+                                            <th>{{ sp.low|floatformat:'2' }}</th>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="{% static 'assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- Bootstrap Js -->
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- Metis Menu Js -->
+    <script src="{% static 'assets/js/jquery.metisMenu.js' %}"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="{% static 'assets/js/dataTables/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'assets/js/dataTables/dataTables.bootstrap.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+         <!-- Custom Js -->
+    <script src="{% static 'assets/js/custom-scripts.js' %}"></script>
+
+{% endblock %}

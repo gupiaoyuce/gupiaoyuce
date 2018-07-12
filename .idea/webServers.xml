@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b6c3aac5-de8d-435d-9a19-c33733d508c1" name="kevinf-server" url="http://140.143.183.148:8000">
+        <fileTransfer host="140.143.183.148" port="22" privateKey="F:\skye\common" rootFolder="/root/Project/stock" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

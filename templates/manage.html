@@ -1,0 +1,10 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+
+<form class="site-form" action="mana"method="post">
+    {% csrf_token %}
+    <input type="submit" value="signup">
+</form>
+    <div>{{ md }}</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+.headnav{
+    background-color: #6cf;
+}
+.sidenav{
+    background-color: aliceblue;
+}
+#login-card{
+    height: 20rem;
+    width: 500px;
+    position: absolute;
+    top: 50%; left: 50%;
+    /*margin:0 auto;*/
+    transform: translate(-50%,-50%);
+    /*border-color: #66ccff;*/
+    /*border: 1px;*/
+}
+#login-card div div form .form-group input{
+
+}

@@ -1,0 +1,42 @@
+{#{% load staticfrom staticfiles %}#}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'base_style.css' %}">
+</head>
+<nav class="navbar navbar-light bg-light justify-content-between headnav">
+    <a class="navbar-brand">强势反弹股票预测工具</a>
+    <form class="form-inline" action="/logout" method="post">
+        {% csrf_token %}
+        {{ username }}
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">登出</button>
+    </form>
+</nav>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <nav class="bd-links sidenav">
+                <a class="bd-toc-item" href="/stockpred" style="display: block">历史预测股票</a>
+                <a class="bd-toc-item" href="/stockprice"    style="display: block">历史股票数据查询</a>
+                <a class="bd-toc-item" href="/userfollow" style="display: block">关注强势股票</a>
+            </nav>
+        </div>
+        <main class="col-10 bd-content" role="main">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</div>
+</body>
+</html>
